@@ -5,8 +5,6 @@ db = SQLAlchemy()
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "5d5fr8f2s2w8o4l5r1c4t8w8p5x5g48t56s"
-
 
 @app.route("/")
 def index():
