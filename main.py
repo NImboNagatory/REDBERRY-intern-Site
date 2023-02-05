@@ -1,0 +1,89 @@
+from flask import Flask, render_template, redirect, flash, url_for, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+app = Flask(__name__)
+
+app.config['SECRET_KEY'] = "5d5fr8f2s2w8o4l5r1c4t8w8p5x5g48t56s"
+
+
+@app.route("/")
+def index():
+    return render_template("main.html")
+
+
+@app.route("/api/degrees")
+def degrees():
+    list_degrees = [
+        {
+            "id": 1,
+            "title": "საშუალო სკოლის დიპლომი"
+        },
+        {
+            "id": 2,
+            "title": "ზოგადსაგანმანათლებლო დიპლომი"
+        },
+        {
+            "id": 3,
+            "title": "ბაკალავრი"
+        },
+        {
+            "id": 4,
+            "title": "მაგისტრი"
+        },
+        {
+            "id": 5,
+            "title": "დოქტორი"
+        },
+        {
+            "id": 6,
+            "title": "ასოცირებული ხარისხი"
+        },
+        {
+            "id": 7,
+            "title": "სტუდენტი"
+        },
+        {
+            "id": 8,
+            "title": "კოლეჯი(ხარისიხს გარეშე)"
+        },
+        {
+            "id": 9,
+            "title": "სხვა"
+        }
+    ]
+    return jsonify(list_degrees)
+
+
+@app.route("/resume/page/1")
+def resume():
+    return render_template("resume.html")
+
+
+@app.after_request
+def apply_caching(response):
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['Content-Security-Policy'] = "default-src 'self'"
+    response.headers['Content-Security-Policy'] = "img-src 'self'"
+    response.headers['Content-Security-Policy'] = "script-src 'self'"
+    response.headers['Content-Security-Policy'] = "style-src 'self'"
+    response.headers['Content-Security-Policy'] = "connect-src 'self'"
+    response.headers['Content-Security-Policy'] = "object-src 'self'"
+    response.headers['Content-Security-Policy'] = "frame-src 'self'"
+    response.headers['Content-Security-Policy'] = "child-src 'self'"
+    response.headers['Content-Security-Policy'] = "form-action 'self'"
+    response.headers['Content-Security-Policy'] = "frame-ancestors 'none'"
+    response.headers['Content-Security-Policy'] = "base-uri 'self'"
+    response.headers['Content-Security-Policy'] = "worker-src 'none'"
+    response.headers['Content-Security-Policy'] = "manifest-src 'none'"
+    response.headers['Content-Security-Policy'] = "prefetch-src 'none'"
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.set_cookie('snakes', '3', max_age=600)
+    response.set_cookie('username', 'flask', secure=True, httponly=True, samesite='Lax')
+    return response
+
+
+if __name__ == "__main__":
+    app.run(host='192.168.0.110', port=8000, debug=False)
