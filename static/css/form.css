@@ -1,0 +1,108 @@
+@import "base.css";
+
+.controll--full {
+  width: 100%;
+}
+
+.controll__label {
+  display: block;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.controll__label::placeholder {
+  color: #00000099;
+}
+
+.controll--fail .controll__label {
+  color: var(--rd-red-400);
+}
+
+.input-container {
+  position: relative;
+  width: max-content;
+}
+
+.controll--full .input-container {
+  width: 100% !important;
+}
+
+.input-container input {
+  border: 1px solid var(--rd-gray-200);
+  border-radius: 4px;
+  width: 371px;
+  /* width: 100%; */
+  min-width: 100px;
+  height: 48px;
+}
+
+.controll--full .input-container input {
+  width: 100% !important;
+}
+
+.input-container input:focus {
+  border: 2px solid var(--rd-gray-200);
+}
+
+.controll--success .input-container input {
+  border: 1px solid var(--rd-green-400);
+}
+
+.controll--fail .input-container input {
+  border: 1px solid var(--rd-red-400);
+}
+
+input {
+  padding: 0 16px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 16px;
+}
+
+.control__icon {
+  position: absolute;
+  visibility: hidden;
+  width: 16.5px;
+  height: 16.5px;
+  top: 50%;
+  right: 16px;
+  transform: translate(-50%, -50%);
+}
+
+.controll--success .input-container .control__icon--success {
+  visibility: visible;
+}
+
+.controll--fail .input-container .control__icon--fail {
+  visibility: visible;
+  right: -56px;
+}
+
+.controll__hint {
+  display: block;
+  margin-top: 8px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--rg-black-800);
+}
+
+.controll textarea {
+  width: 100%;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  border: none;
+
+  padding: 18px 60px;
+  border-radius: 4px;
+}

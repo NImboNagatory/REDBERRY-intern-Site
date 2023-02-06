@@ -1,0 +1,32 @@
+:root {
+  --rd-black: #1a1a1a;
+  --rg-black-800: #2e2e2e;
+  --rd-gray-200: #bcbcbc;
+  --rd-green-400: #98e37e;
+  --rd-red-400: #ef5050;
+  --rd-gray-400: #f9f9f9;
+  --rd-violet-400: #6b40e3;
+  --layout-size: 1920px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-family: monospace; */
+}
+
+input {
+  outline: none;
+}
+
+.row {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}

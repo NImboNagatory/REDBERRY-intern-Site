@@ -57,7 +57,7 @@ def degrees():
 
 @app.route("/resume/page/1")
 def resume():
-    return render_template("resume.html"), 200
+    return render_template("form.html"), 200
 
 
 @app.errorhandler(404)
