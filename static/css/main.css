@@ -86,3 +86,33 @@ main {
         height: 19px;
     }
 }
+@media screen and (max-width: 452px) {
+    .content__button{
+        top: 30%;
+        font-size: 11px;
+        max-width: 232px;
+        width: 100%;
+    }
+    .center-logo{
+        width: 149px;
+        height: 149px;
+        left: 55%;
+        top: 29%;
+    }
+}
+@media screen and (max-width: 375px) {
+    .center-logo{
+        width: 149px;
+        height: 149px;
+        left: 50%;
+        top: 29%;
+    }
+}
+@media screen and (max-width: 280px) {
+    .center-logo{
+        width: 149px;
+        height: 149px;
+        left: 40%;
+        top: 29%;
+    }
+}
