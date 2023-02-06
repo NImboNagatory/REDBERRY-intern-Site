@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, flash, url_for, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from req_res import request
 
 db = SQLAlchemy()
 
@@ -59,6 +60,11 @@ def resume():
     return render_template("resume.html"), 200
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 @app.after_request
 def apply_caching(response):
     response.headers["X-Frame-Options"] = "SAMEORIGIN"
@@ -84,4 +90,4 @@ def apply_caching(response):
 
 
 if __name__ == "__main__":
-    app.run(host='localhost', port=8000, debug=False)
+    app.run(host='localhost', port=8000, debug=True)
