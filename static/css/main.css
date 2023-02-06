@@ -24,10 +24,9 @@ main {
     margin: auto;
 }
 
-.header {
+.header__border{
     border-bottom: 1px solid var(--rd-black);
 }
-
 .header__logo {
     margin: 25px 0;
     max-width: 236px;
@@ -67,4 +66,23 @@ main {
     height: 299px;
 
     mix-blend-mode: multiply;
+}
+@media screen and (max-width: 844px) {
+    .content__button{
+        top: 30%;
+        font-size: 11px;
+        max-width: 232px;
+        width: 100%;
+    }
+    .center-logo{
+        width: 149px;
+        height: 149px;
+        left: 60%;
+        top: 29%;
+    }
+    .header__logo{
+        margin: 10px 0;
+        max-width: 118px;
+        height: 19px;
+    }
 }

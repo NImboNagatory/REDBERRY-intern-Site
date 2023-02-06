@@ -90,12 +90,8 @@ figcaption span {
 	    font-size: 7px;
 	}
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1080px) {
 	figure {
 	    font-size: 8px;
 	}
-}
-.back_home{
-	color: white;
-	font-size: large;
 }
