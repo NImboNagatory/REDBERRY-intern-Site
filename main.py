@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("main.html")
+    return render_template("main.html"), 200
 
 
 @app.route("/api/degrees")
@@ -51,12 +51,12 @@ def degrees():
             "title": "სხვა"
         }
     ]
-    return jsonify(list_degrees)
+    return jsonify(list_degrees), 204
 
 
 @app.route("/resume/page/1")
 def resume():
-    return render_template("resume.html")
+    return render_template("resume.html"), 200
 
 
 @app.after_request
@@ -84,4 +84,4 @@ def apply_caching(response):
 
 
 if __name__ == "__main__":
-    app.run(host='192.168.0.110', port=8000, debug=False)
+    app.run(host='localhost', port=8000, debug=False)
