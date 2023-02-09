@@ -4,7 +4,7 @@ from func import request_to_api, list_degrees, security_headers
 app = Flask(__name__)
 
 
-@app.route('/', methods=["GET"])
+@app.route('/')
 def index():
     return render_template("main.html"), 200
 
@@ -12,6 +12,10 @@ def index():
 @app.route('/api/degrees')
 def degrees():
     return jsonify(list_degrees), 204
+
+# @app.route('/api/push')
+# def api_talk():
+#     request_to_api()
 
 
 @app.route('/resume/')
