@@ -1,8 +1,5 @@
 from flask import Flask, render_template, redirect, flash, url_for, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from func import request_to_api, list_degrees, security_headers
-
-db = SQLAlchemy()
 
 app = Flask(__name__)
 
