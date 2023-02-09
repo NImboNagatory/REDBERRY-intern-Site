@@ -8,6 +8,11 @@ def request_to_api(data):
     return post(api_url, json=data)
 
 
+def create_app():
+    app = Flask(__name__)
+    return app
+
+
 def security_headers(parent):
     parent.headers["X-Frame-Options"] = "SAMEORIGIN"
     parent.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload'
