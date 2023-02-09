@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, flash, url_for, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from req_res import request
+from func import request_to_api
 
 db = SQLAlchemy()
 
