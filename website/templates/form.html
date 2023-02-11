@@ -10,12 +10,13 @@
     <script src="{{ url_for('static', filename='app/utils.js') }}" defer></script>
     <script src="{{ url_for('static', filename='app/main.js') }}" defer></script>
       <link rel="icon" type="image/png" sizes="48x48" href="{{url_for('static', filename='assets/icons8-red-circle-48.webp')}}" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Resume</title>
   </head>
   <body>
     <main class="form-page">
       <section class="form-section">
-        <form data-multi-step method="POST" class="myForm">
+        <form data-multi-step method="POST" class="myForm" action="/form_submission">
           <img id="myButton_back" class="form__go-back" src="{{ url_for('static', filename='assets/go-back.png') }}" alt="" />
           <div class="form-header">
             <h3 class="form-header__title">პირადი ინფო</h3>
@@ -156,7 +157,7 @@
                 <div class="controll controll--full">
                   <label class="controll__label">დამსაქმებელი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="დამსაქმებელი" />
+                    <input class="employer" type="text" placeholder="დამსაქმებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -176,13 +177,13 @@
                   <div class="controll">
                     <label class="controll__label">დაწყების როცხვი</label>
                     <div class="input-container">
-                      <input type="date" />
+                      <input class="startDate" type="date" />
                     </div>
 
                   </div>
                   <div class="controll">
                     <label class="controll__label">დამთავრების რიცხვი</label>
-                    <div class="input-container">
+                    <div class="endDate" class="input-container">
                       <input type="date" />
                     </div>
 
@@ -192,7 +193,7 @@
                   <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea name="" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
+                  <textarea class="jobDesc" name="" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
 
                 </div>
                   <br>
@@ -212,9 +213,9 @@
             <div class="form-step" id="step-3" data-step>
               <div class="education-form">
                 <div class="controll controll--full">
-                  <label class="controll__label">სასწავლებელი</label>
+                  <label class="controll__label edu">სასწავლებელი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="სასწავლებელი" />
+                    <input class="schoolInput" type="text" placeholder="სასწავლებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -234,7 +235,7 @@
                   <div class="controll">
                     <label class="controll__label">ხარისხი</label>
                     <div class="input-container">
-                      <select name="" id="">
+                      <select name="" id="grade">
                         <option value="1">საშუალო სკოლი დიპლომი</option>
                         <option value="1">ზოგადსაგანმანატლებლო დიპლომი</option>
                         <option value="1">ბაკალავრი</option>
@@ -260,7 +261,7 @@
                   <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea name="" placeholder="განათლების აღწერა"></textarea>
+                  <textarea class="eduDesc" name="" placeholder="განათლების აღწერა"></textarea>
                 </div>
                 <br>
                 <br>
@@ -270,7 +271,7 @@
               </div>
               <div class="row justify-between controlls-container">
                 <button type="button" class="form-btn" data-prev>უკან</button>
-                <button type="button" onclick="send_data()" class="form-btn" id="sendButton">შენახვა</button>
+                <button type="submit" class="form-btn">შენახვა</button>
               </div>
             </div>
           </div>
@@ -324,7 +325,7 @@
             </div>
             <div>
               <h4 class="cv__subTitle">გამოცდილება</h4>
-              <p class="cv__secondarySubTitle">
+              <p class="cv__secondarySubTitle" id="school">
                 React Native Developer, Microsoft
               </p>
               <span class="cv__date">2020-09-23 - 2020-09-23</span>
@@ -349,17 +350,27 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
         <script type="text/javascript">
-            function send_data (){
-                let formData = JSON.stringify($('#myForm').serialize());
-                $.ajax({
-                      type: "POST",
-                      url: "{{url_for('views.call_api')}}",
-                      data: formData,
-                      dataType: "json",
-                      contentType : "application/json"
-                    });
+            $(document).ready(function () {
+              $("#myForm").submit(function (event) {
+                event.preventDefault();
 
-            }
+                var formData = {
+                  'name': $('input[id=name]').val(),
+                  'lastName': $('input[id=lastName]').val(),
+                  'email': $('input[id=email]').val(),
+                  'aboutMe': $('textarea[id=aboutMe]').val()
+                };
+                console.log(formData)
+                $.ajax({
+                  type: "POST",
+                  url: "{{ url_for('views.call_api') }}",
+                  data: formData,
+                  success: function () {
+                    alert('Form data was successfully sent to the server.');
+                  }
+                });
+              });
+            });
         </script>
 
   </body>

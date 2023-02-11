@@ -1,48 +1,40 @@
-function validate() {}
+const validate = () => {};
 
-function displayImage(fileInput, imgElement) {
-  let file = fileInput.files[0];
+const displayImage = (fileInput, imgElement) => {
+  const file = fileInput.files[0];
 
   if (file) {
-    let reader = new FileReader();
-
-    reader.addEventListener("load", function () {
-      imgElement.src = reader.result;
-    });
-
+    const reader = new FileReader();
+    reader.onload = () => { imgElement.src = reader.result; };
     reader.readAsDataURL(file);
   } else {
-    imgElement.src = "";
+    imgElement.src = '';
   }
-}
+};
 
 const checkElementLength = (element) => {
-  if (!element.value) {
-    showErrorState(element, "მინიმუმ 2 სიმბოლო");
+  if (!element.value || element.value.length < 2) {
+    showErrorState(element, 'Minimum 2 characters required');
   }
 };
 
-const checkRegex = (str, regex) => {
-  return regex.test(str);
-};
+const checkRegex = (str, regex) => regex.test(str);
 
 const showErrorState = (element, message) => {
-  const parent = element.closest(".controll");
-  parent.classList.add("controll--fail");
-  const hint = parent.querySelector(".controll__hint");
+  const parent = element.closest('.controll');
+  parent.classList.add('controll--fail');
+  const hint = parent.querySelector('.controll__hint');
   hint.innerHTML = message;
 };
 
-const clearErrorState = (element, message) => {
-  const parent = element.closest(".controll");
-  parent.classList.remove("controll--fail");
-  parent.classList.add("controll--success");
-  const hint = parent.querySelector(".controll__hint");
-  hint.innerHTML = "";
+const clearErrorState = (element) => {
+  const parent = element.closest('.controll');
+  parent.classList.remove('controll--fail');
+  parent.classList.add('controll--success');
+  const hint = parent.querySelector('.controll__hint');
+  hint.innerHTML = '';
 };
 
 const clearValues = (elements) => {
-  for (element of elements) {
-    element.value = "";
-  }
+  elements.forEach((element) => { element.value = ''; });
 };

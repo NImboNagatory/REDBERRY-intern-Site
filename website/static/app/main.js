@@ -59,72 +59,142 @@ const photoOpenerBtn = document.getElementById("photo-opener");
 const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
 const aboutInput = document.getElementById("aboutMe");
+const schoolName = document.getElementById("schoolInput");
+const jobName = document.getElementById("job-input");
+const employer = document.getElementById("employer");
+const jobStart = document.getElementById("startDate");
+const jobEnd = document.getElementById("endDate");
+const jobDescription = document.getElementById("jobDesc");
+const education = document.getElementById("controll__label.edu");
+const grade = document.getElementById("grade");
+const eduDesc = document.getElementById("eduDesc");
+
+
+fetch("/api/call", {
+  method:"POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(nameInput)
+})
+    .then(response => response.json())
+    .then(data => console.log("succes", data))
+    .catch(error => console.error("error", error))
+
 
 function handelFirstStep() {
   firstStepErrors = { ...firstInitState };
 
-  // checkElementLength(nameInput);
-  // checkElementLength(lastNameInput);
-  // if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
-  //   showErrorState(emailInput, "უნდა მთავრდებოდეს @redberry.ge-თი");
-  // }
-  // if (!checkRegex(phoneInput, /^\+\d{3} \d{3} \d{2} \d{2} \d{2}$/)) {
-  //   showErrorState(
-  //     phoneInput,
-  //     "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
-  //   );
-  // }
   if (!nameInput.value) {
-    firstStepErrors.name = "სავალდებულო";
+    firstStepErrors.name = "Required";
   } else if (nameInput.value.length < 2) {
-    firstStepErrors.name = "მინიმუმ 2 სიმბოლო";
+    firstStepErrors.name = "Minimum 2 characters";
   }
 
   if (!lastNameInput.value) {
-    firstStepErrors.lastName = "სავალდებულო";
+    firstStepErrors.lastName = "Required";
   } else if (lastNameInput.value.length < 2) {
-    firstStepErrors.lastName = "მინიმუმ 2 სიმბოლო";
+    firstStepErrors.lastName = "Minimum 2 characters";
   }
 
-  // if (!photoInput.files.length) {
-  //   firstStepErrors.photo = "სავალდებულოა";
-  // }
-
   if (!emailInput.value) {
-    firstStepErrors.email = "სავალდებულოა";
+    firstStepErrors.email = "Required";
   } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
-    firstStepErrors.email = "უნდა მთავრდებოდეს @redberry.ge-თი";
+    firstStepErrors.email = "Must contain @redberry.ge";
   }
 
   if (!phoneInput.value) {
-    firstStepErrors.phone = "სავალდებულოა";
-  } else if (
-    !checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/ )
-  ) {
-    firstStepErrors.phone =
-      "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს";
+    firstStepErrors.phone = "Required";
+  } else if (!checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/)) {
+    firstStepErrors.phone = "Must match Georgian phone number format";
   }
 
   const errorKeys = Object.keys(firstStepErrors);
-
   errorKeys.map((key) => {
     let hasError = false;
-
     const errorText = firstStepErrors[key];
+
     if (errorText) {
       hasError = true;
       showErrorState(document.getElementById(key), errorText);
     } else {
-      console.log(key);
-      clearErrorState(document.getElementById(key));
+      hideErrorState(document.getElementById(key));
     }
 
-    if (!hasError) {
-      currentStep = 1;
-      showCurrentStep();
-    }
+    return hasError;
   });
+
+  return !errorKeys.some((key) => firstStepErrors[key]);
 }
+
+
+
+
+// function handelFirstStep() {
+//   firstStepErrors = { ...firstInitState };
+//
+//   // checkElementLength(nameInput);
+//   // checkElementLength(lastNameInput);
+//   // if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
+//   //   showErrorState(emailInput, "უნდა მთავრდებოდეს @redberry.ge-თი");
+//   // }
+//   // if (!checkRegex(phoneInput, /^\+\d{3} \d{3} \d{2} \d{2} \d{2}$/)) {
+//   //   showErrorState(
+//   //     phoneInput,
+//   //     "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
+//   //   );
+//   // }
+//   if (!nameInput.value) {
+//     firstStepErrors.name = "სავალდებულო";
+//   } else if (nameInput.value.length < 2) {
+//     firstStepErrors.name = "მინიმუმ 2 სიმბოლო";
+//   }
+//
+//   if (!lastNameInput.value) {
+//     firstStepErrors.lastName = "სავალდებულო";
+//   } else if (lastNameInput.value.length < 2) {
+//     firstStepErrors.lastName = "მინიმუმ 2 სიმბოლო";
+//   }
+//
+//   // if (!photoInput.files.length) {
+//   //   firstStepErrors.photo = "სავალდებულოა";
+//   // }
+//
+//   if (!emailInput.value) {
+//     firstStepErrors.email = "სავალდებულოა";
+//   } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
+//     firstStepErrors.email = "უნდა მთავრდებოდეს @redberry.ge-თი";
+//   }
+//
+//   if (!phoneInput.value) {
+//     firstStepErrors.phone = "სავალდებულოა";
+//   } else if (
+//     !checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/ )
+//   ) {
+//     firstStepErrors.phone =
+//       "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს";
+//   }
+//
+//   const errorKeys = Object.keys(firstStepErrors);
+//
+//   errorKeys.map((key) => {
+//     let hasError = false;
+//
+//     const errorText = firstStepErrors[key];
+//     if (errorText) {
+//       hasError = true;
+//       showErrorState(document.getElementById(key), errorText);
+//     } else {
+//       console.log(key);
+//       clearErrorState(document.getElementById(key));
+//     }
+//
+//     if (!hasError) {
+//       currentStep = 1;
+//       showCurrentStep();
+//     }
+//   });
+// }
 
 const handleAddMoreButtonClick = (e) => {
   const formContainers = document.querySelectorAll(".experiance-form");
@@ -219,7 +289,18 @@ emailInput.addEventListener("input", (e) => {
   const value = e.target.value;
   document.querySelector(".cv__email").textContent = value;
 });
-
+aboutInput.addEventListener('input', (e) => {
+  const value =e.target.value;
+  document.querySelector(".cv__text").textContent = `${value}`;
+});
+aboutInput.addEventListener('input', (e) => {
+  const value =e.target.value;
+  document.querySelector(".cv__text").textContent = `${value}`;
+});
+jobName.addEventListener('input', (e) => {
+  const value =e.target.value;
+  document.querySelector(".cv__job__title").textContent = `${value}`;
+});
 photoOpenerBtn.addEventListener("click", (e) => {
   photoInput.click();
 });

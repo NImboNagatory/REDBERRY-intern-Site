@@ -24,11 +24,17 @@ def resume():
     return render_template("form.html"), 200
 
 
-@views.route("/send-form", methods=['GET', 'POST'])
+@views.route("/form_submission", methods=['POST'])
 def call_api():
-    data = request.form.to_dict()
-    print(data)
-    return data
+    form_data = request.form
+    # Log the form data
+    print(form_data)
+
+    # Return a JSON response
+    return jsonify({
+        "message": "Form submitted successfully!",
+        "form_data": form_data
+    })
 
 
 @views.errorhandler(404)
