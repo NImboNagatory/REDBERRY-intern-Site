@@ -1,4 +1,4 @@
-@import "base.css";
+@import "./base.css";
 
 .controll--full {
   width: 100%;
@@ -52,6 +52,10 @@
   border: 1px solid var(--rd-green-400);
 }
 
+.controll--success textarea {
+  border: 1px solid var(--rd-green-400);
+}
+
 .controll--fail .input-container input {
   border: 1px solid var(--rd-red-400);
 }
@@ -92,8 +96,24 @@ input {
   color: var(--rg-black-800);
 }
 
+.controll__error-hint {
+  display: none;
+}
+
+.control__icon--fail .controll__hint {
+  display: none;
+}
+
+.control__icon--fail .controll__error-hint {
+  display: block;
+}
+
 .controll textarea {
   width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  height: 179px;
+  outline: none;
 }
 
 .btn {
@@ -105,4 +125,29 @@ input {
 
   padding: 18px 60px;
   border-radius: 4px;
+}
+#photo-opener {
+  padding: 10px 10px 12px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--rd-blue-400);
+}
+
+.devider-line {
+  background-color: var(--rd-gray-600);
+  width: 100%;
+  height: 1px;
+}
+
+.btn.add-more {
+  background-color: #62a1eb;
+  border-radius: 4px;
+  padding: 18px 60px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  margin-top: 45px;
 }

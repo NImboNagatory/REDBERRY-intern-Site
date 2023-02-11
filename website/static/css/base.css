@@ -2,10 +2,14 @@
   --rd-black: #1a1a1a;
   --rg-black-800: #2e2e2e;
   --rd-gray-200: #bcbcbc;
+  --rd-gray-700: #919191;
+  --rd-gray-600: #c8c8c8;
+  --rd-gray-400: #f9f9f9;
   --rd-green-400: #98e37e;
   --rd-red-400: #ef5050;
-  --rd-gray-400: #f9f9f9;
+  --rd-red-600: #f93b1d;
   --rd-violet-400: #6b40e3;
+  --rd-blue-400: #0e80bf;
   --layout-size: 1920px;
 }
 
@@ -29,4 +33,12 @@ input {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.hidden {
+  display: none;
 }

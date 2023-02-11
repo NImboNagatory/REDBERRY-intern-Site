@@ -1,5 +1,9 @@
 @import "form.css";
 
+body {
+  background-color: var(--rd-gray-400);
+}
+
 .form-page {
   display: flex;
   max-width: var(--layout-size);
@@ -10,7 +14,12 @@
   padding-top: 47px;
   flex-basis: calc(1920px - 822px);
   padding-left: 150px;
-  background-color: var(--rd-gray-400);
+}
+
+.form__go-back {
+  position: absolute;
+  top: 0;
+  left: -71px;
 }
 
 .cv-section {
@@ -18,6 +27,7 @@
 }
 
 form {
+  position: relative;
   width: 100%;
   height: 100%;
   max-width: 798px;
@@ -37,6 +47,10 @@ form {
   align-items: center;
   padding-bottom: 15px;
   border-bottom: 1px solid var(--rd-black);
+}
+
+.form-body {
+  margin-top: 77px;
 }
 
 .form-header__title {
@@ -66,6 +80,106 @@ form {
   background-color: var(--rd-violet-400);
 }
 
+.controll--photo {
+  display: flex;
+  column-gap: 38px;
+  align-items: center;
+}
+
+.controll--photo p {
+  white-space: nowrap;
+}
+
+.controll--photo #photo {
+  display: none;
+}
+
+.cv-section {
+}
+
+.cv {
+  position: relative;
+  background-color: #fff;
+  height: 1080px;
+  padding: 48px 75px 0 80px;
+}
+.cv__fullName {
+  margin-bottom: 17px;
+}
+
 .cv__header {
   display: flex;
+}
+
+.cv__email,
+.cv__phone {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.cv__email {
+  margin-bottom: 10px;
+}
+
+.cv__phone {
+  margin-bottom: 34px;
+}
+
+.cv__fullName {
+  display: flex;
+  column-gap: 20px;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 42px;
+  color: var(--rd-red-600);
+}
+
+.cv__img {
+  width: 246px;
+  height: 246px;
+  border-radius: 133px;
+}
+
+.cv__subTitle {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--rd-red-600);
+}
+
+.cv__secondarySubTitle {
+  margin-bottom: 7px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--rd-black);
+}
+
+.cv__date {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: var(--rd-gray-700);
+}
+
+.cv__text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.cv__logo-img {
+  position: absolute;
+  bottom: 44px;
+}
+
+.controlls-container {
+  margin-top: 160px;
+  margin-bottom: 65px;
 }

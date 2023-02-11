@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}" />
-    <link rel="stylesheet" href="{{url_for('static', filename='css/formPageStyles.css')}}" />
-    <script src="{{url_for('static', filename='app/main.js')}}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formPageStyles.css') }}" />
+    <script src="{{ url_for('static', filename='app/utils.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='app/main.js') }}" defer></script>
+      <link rel="icon" type="image/png" sizes="48x48" href="{{url_for('static', filename='assets/icons8-red-circle-48.webp')}}" />
     <title>Resume</title>
   </head>
   <body>
     <main class="form-page">
       <section class="form-section">
         <form data-multi-step>
+          <img id="myButton_back" class="form__go-back" src="{{ url_for('static', filename='assets/go-back.png') }}" alt="" />
           <div class="form-header">
             <h3 class="form-header__title">პირადი ინფო</h3>
             <div class="form-header__step-container">
@@ -25,15 +28,15 @@
                 <div class="controll">
                   <label class="controll__label">სახელი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="სახელი" />
+                    <input type="text" id="name" placeholder="სახელი" />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
@@ -42,30 +45,31 @@
                 <div class="controll">
                   <label class="controll__label">გვარი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input type="text" id="lastName" placeholder="გვარი" />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
                   <span class="controll__hint">Hint</span>
                 </div>
               </div>
-              <div>
+              <div class="controll controll--photo">
                 <p>პირადი ფოტოს ატვირთვა</p>
-                <button>ატვირთვა</button>
-                <input type="file" />
+                <button type="button" id="photo-opener">ატვირთვა</button>
+
+                <input type="file" id="photo" accept="image/*" />
               </div>
               <div>
                 <div class="controll">
                   <label class="controll__label">გვარი</label>
-                  <textarea name=""></textarea>
+                  <textarea name="" id="aboutMe"></textarea>
                   <span class="controll__hint">Hint</span>
                 </div>
               </div>
@@ -73,15 +77,20 @@
                 <div class="controll controll--full">
                   <label class="controll__label">ელ.ფოსტა</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input
+                      type="text"
+                      id="email"
+                      value="example@redberry.ge"
+                      placeholder="გვარი"
+                    />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
@@ -90,44 +99,48 @@
               </div>
               <div class="row">
                 <div class="controll controll--full">
-                  <label class="controll__label">ელ.ფოსტა</label>
+                  <label class="controll__label">მობილურის ნომერი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input
+                      type="text"
+                      id="phone"
+                      value="+995 557 44 11 90"
+                      placeholder="გვარი"
+                    />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
                   <span class="controll__hint">Hint</span>
                 </div>
               </div>
-
-              <div class="row justify-between">
+              <div class="row justify-between controlls-container">
                 <button type="button" class="form-btn" data-next>
                   შემდეგი
                 </button>
               </div>
             </div>
-            <div class="form-step" data-step>
-              <div data-dynamic-content>
+            <div class="form-step" id="step-2" data-step>
+              <div class="experiance-form">
                 <div class="controll controll--full">
                   <label class="controll__label">ელ.ფოსტა</label>
                   <div class="input-container">
                     <input type="text" placeholder="გვარი" />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
@@ -139,12 +152,12 @@
                     <input type="text" placeholder="გვარი" />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
@@ -171,32 +184,32 @@
                   <textarea name=""></textarea>
                   <span class="controll__hint">Hint</span>
                 </div>
-                <div>გამყოფი ხაზი</div>
+                <div class="devider-line"></div>
                 <button class="btn add-more" type="button">
                   მეტი გამოცდილების დამატება
                 </button>
               </div>
-              <div class="row justify-between">
+              <div class="row justify-between controlls-container">
                 <button type="button" class="form-btn" data-prev>უკან</button>
                 <button type="button" class="form-btn" data-next>
                   შემდეგი
                 </button>
               </div>
             </div>
-            <div class="form-step" data-step>
-              <div data-second-dynamic-content>
+            <div class="form-step" id="step-3" data-step>
+              <div class="education-form">
                 <div class="controll controll--full">
                   <label class="controll__label">სასწავლებელი</label>
                   <div class="input-container">
                     <input type="text" placeholder="გვარი" />
                     <img
                       class="control__icon control__icon--success"
-                      src="{{url_for('static', filename='assets/success.svg')}}"
+                      src="{{ url_for('static', filename='assets/success.svg') }}"
                       alt="icon"
                     />
                     <img
                       class="control__icon control__icon--fail"
-                      src="{{url_for('static', filename='assets/fail.svg')}}"
+                      src="{{ url_for('static', filename='assets/fail.svg') }}"
                       alt="icon"
                     />
                   </div>
@@ -232,7 +245,7 @@
                   მეტი გამოცდილების დამატება
                 </button>
               </div>
-              <div class="row justify-between">
+              <div class="row justify-between controlls-container">
                 <button type="button" class="form-btn" data-prev>უკან</button>
                 <button type="button" class="form-btn">შენახვა</button>
               </div>
@@ -245,28 +258,53 @@
           <div>
             <div class="cv__header">
               <div>
-                <h2 class="cv__title">ანზორ მუმლაძე</h2>
+                <h2 class="cv__fullName">
+                  <span class="cv__name">ანზორ</span>
+                  <span class="cv__lastName">მუმლაძე</span>
+                </h2>
                 <div>
-                  <p>anzorr666@redberry.ge</p>
-                  <p>+995 597 63 45 16</p>
+                  <div class="cv__email">
+                    <img src="{{ url_for('static', filename='assets/email.svg') }}" alt="" />
+                    <p>anzorr666@redberry.ge</p>
+                  </div>
+                  <div class="cv__phone">
+                    <img src="{{ url_for('static', filename='assets/phone.svg') }}" alt="" />
+                    <p>+995 597 63 45 16</p>
+                  </div>
                 </div>
-                <h4>ჩემ შესახებ</h4>
-                <p>
+                <h4 class="cv__subTitle">ჩემ შესახებ</h4>
+                <p class="cv__text">
                   ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები
                   გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ.
                 </p>
               </div>
 
               <div>
-                <img src="{{url_for('static', filename='/assets/cv-photo.png')}}" alt="" />
+                <img src="{{ url_for('static', filename='assets/cv-photo.png') }}" alt="" class="cv__img" />
               </div>
             </div>
             <div class="devider-line"></div>
             <div>
-              <h4>გამოცდილება</h4>
-              <p>React Native Developer, Microsoft</p>
-              <span>2020-09-23 - 2020-09-23</span>
-              <p>
+              <h4 class="cv__subTitle">გამოცდილება</h4>
+              <p class="cv__secondarySubTitle">
+                React Native Developer, Microsoft
+              </p>
+              <span class="cv__date">2020-09-23 - 2020-09-23</span>
+              <p class="cv__text">
+                Experienced Javascript Native Developer with 5 years in the
+                industry. proficient withreact. Used problem-solving aptitude to
+                encahge application performance by 14%.created data
+                visualisation tools and integrated designs.
+              </p>
+              <div class="devider-line"></div>
+            </div>
+            <div>
+              <h4 class="cv__subTitle">გამოცდილება</h4>
+              <p class="cv__secondarySubTitle">
+                React Native Developer, Microsoft
+              </p>
+              <span class="cv__date">2020-09-23 - 2020-09-23</span>
+              <p class="cv__text">
                 Experienced Javascript Native Developer with 5 years in the
                 industry. proficient withreact. Used problem-solving aptitude to
                 encahge application performance by 14%.created data
@@ -275,8 +313,14 @@
               <div class="devider-line"></div>
             </div>
           </div>
+          <img class="cv__logo-img" src="{{ url_for('static', filename='assets/cv-logo.svg') }}" alt="" />
         </div>
       </section>
     </main>
+        <script type="text/javascript">
+        document.getElementById("myButton_back").onclick = function () {
+            location.href = "{{url_for('views.index')}}";
+        };
+        </script>
   </body>
 </html>
