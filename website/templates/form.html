@@ -15,7 +15,7 @@
   <body>
     <main class="form-page">
       <section class="form-section">
-        <form data-multi-step>
+        <form data-multi-step method="POST" name="myForm">
           <img id="myButton_back" class="form__go-back" src="{{ url_for('static', filename='assets/go-back.png') }}" alt="" />
           <div class="form-header">
             <h3 class="form-header__title">პირადი ინფო</h3>
@@ -75,7 +75,7 @@
                 <div class="controll">
                   <label class="controll__label">ჩემს შესახებ (არასავლადებული)</label>
                   <textarea name="" id="aboutMe"></textarea>
-                  <span class="controll__hint">Hint</span>
+
                 </div>
               </div>
               <div class="row">
@@ -270,7 +270,7 @@
               </div>
               <div class="row justify-between controlls-container">
                 <button type="button" class="form-btn" data-prev>უკან</button>
-                <button type="button" class="form-btn">შენახვა</button>
+                <button type="button" class="form-btn" onclick="doFunction()">შენახვა</button>
               </div>
             </div>
           </div>
@@ -346,5 +346,25 @@
             location.href = "{{url_for('views.index')}}";
         };
         </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+                    function doFunction()
+            {
+                var formData = JSON.stringify($(#myForm).serializeArray());
+                $.ajax({
+                      type: "POST",
+                      url: "/api/call",
+                      data: formData,
+                      success: function(){},
+                      dataType: "json",
+                      contentType : "application/json"
+                    });
+
+            }
+        </script>
+
   </body>
 </html>

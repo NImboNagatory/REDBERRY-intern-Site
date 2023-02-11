@@ -1,5 +1,5 @@
 from requests import post
-from flask import Flask, render_template, redirect, flash, url_for, request, jsonify
+from flask import Flask
 
 api_url = "https://resume.redberryinternship.ge/api/cvs"
 

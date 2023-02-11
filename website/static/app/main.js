@@ -225,13 +225,16 @@ photoOpenerBtn.addEventListener("click", (e) => {
 });
 
 
+
+
 window.onbeforeunload = function() {
-    localStorage.setItem("name", $('#name').val());
-    localStorage.setItem("surname", $('#lastName').val());
-    localStorage.setItem("email", $('#email').val());
-    localStorage.setItem("phone", $('#phone').val());
-    localStorage.setItem("aboutMe", $('#aboutMe').val());
-    // ...
-}
+    localStorage.setItem("name", $('.name').val());
+    localStorage.setItem("surname", $('.lastName').val());
+    localStorage.setItem("email", $('.email').val());
+    localStorage.setItem("phone", $('.phone').val());
+    localStorage.setItem("aboutMe", $('.aboutMe').val());
+};
+
+
 
 

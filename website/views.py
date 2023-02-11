@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 from .func import list_degrees, security_headers
 
 views = Blueprint('views', __name__)
@@ -11,7 +11,7 @@ def index():
 
 @views.route('/api/degrees')
 def degrees():
-    return jsonify(list_degrees), 204
+    return jsonify(list_degrees), 200
 
 
 # @app.route('/api/push')
@@ -22,6 +22,12 @@ def degrees():
 @views.route('/resume/')
 def resume():
     return render_template("form.html"), 200
+
+
+@views.route("/api/call", methods=['GET', 'POST'])
+def call():
+    print(request.get_data())
+    return request.get_data()
 
 
 @views.errorhandler(404)
