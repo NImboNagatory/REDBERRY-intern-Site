@@ -18,7 +18,6 @@ def security_headers(parent):
     parent.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload'
     parent.headers['Content-Security-Policy'] = "default-src 'self'"
     parent.headers['Content-Security-Policy'] = "img-src 'self'"
-    parent.headers['Content-Security-Policy'] = "script-src 'self'"
     parent.headers['Content-Security-Policy'] = "style-src 'self'"
     parent.headers['Content-Security-Policy'] = "connect-src 'self'"
     parent.headers['Content-Security-Policy'] = "object-src 'self'"

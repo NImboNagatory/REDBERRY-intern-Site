@@ -19,15 +19,16 @@ def degrees():
 #     request_to_api()
 
 
-@views.route('/resume/')
+@views.route('/resume/', methods=['GET', 'POST'])
 def resume():
     return render_template("form.html"), 200
 
 
-@views.route("/api/call", methods=['GET', 'POST'])
-def call():
-    print(request.get_data())
-    return request.get_data()
+@views.route("/send-form", methods=['GET', 'POST'])
+def call_api():
+    data = request.form.to_dict()
+    print(data)
+    return data
 
 
 @views.errorhandler(404)
