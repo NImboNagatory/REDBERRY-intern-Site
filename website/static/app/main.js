@@ -58,6 +58,7 @@ const photoInput = document.getElementById("photo");
 const photoOpenerBtn = document.getElementById("photo-opener");
 const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
+const aboutInput = document.getElementById("aboutMe");
 
 function handelFirstStep() {
   firstStepErrors = { ...firstInitState };
@@ -98,7 +99,7 @@ function handelFirstStep() {
   if (!phoneInput.value) {
     firstStepErrors.phone = "სავალდებულოა";
   } else if (
-    !checkRegex(phoneInput.value, /^\+\d{3} \d{3} \d{2} \d{2} \d{2}$/)
+    !checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/ )
   ) {
     firstStepErrors.phone =
       "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს";
@@ -202,6 +203,10 @@ lastNameInput.addEventListener("input", (e) => {
   const value = e.target.value;
   document.querySelector(".cv__lastName").textContent = `  ${value}`;
 });
+aboutInput.addEventListener('input', (e) => {
+  const value =e.target.value;
+  document.querySelector(".cv__text").textContent = `${value}`;
+});
 photoInput.addEventListener("change", (e) => {
   console.log("changee");
   displayImage(photoInput, document.querySelector(".cv__img"));
@@ -218,3 +223,15 @@ emailInput.addEventListener("input", (e) => {
 photoOpenerBtn.addEventListener("click", (e) => {
   photoInput.click();
 });
+
+
+window.onbeforeunload = function() {
+    localStorage.setItem("name", $('#name').val());
+    localStorage.setItem("surname", $('#lastName').val());
+    localStorage.setItem("email", $('#email').val());
+    localStorage.setItem("phone", $('#phone').val());
+    localStorage.setItem("aboutMe", $('#aboutMe').val());
+    // ...
+}
+
+

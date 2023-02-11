@@ -28,7 +28,7 @@
                 <div class="controll">
                   <label class="controll__label">სახელი</label>
                   <div class="input-container">
-                    <input type="text" id="name" placeholder="სახელი" />
+                    <input type="text" id="name" placeholder="ანზორ" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -40,12 +40,12 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">მინიმუმ 2 ასო, ქართული ასოები</span>
                 </div>
                 <div class="controll">
                   <label class="controll__label">გვარი</label>
                   <div class="input-container">
-                    <input type="text" id="lastName" placeholder="გვარი" />
+                    <input type="text" id="lastName" placeholder="მუმლაძე" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -57,18 +57,22 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">მინიმუმ 2 ასო, ქართული ასოები</span>
                 </div>
               </div>
+              <br>
+                  <br>
               <div class="controll controll--photo">
                 <p>პირადი ფოტოს ატვირთვა</p>
                 <button type="button" id="photo-opener">ატვირთვა</button>
 
                 <input type="file" id="photo" accept="image/*" />
               </div>
+                <br>
+                <br>
               <div>
                 <div class="controll">
-                  <label class="controll__label">გვარი</label>
+                  <label class="controll__label">ჩემს შესახებ (არასავლადებული)</label>
                   <textarea name="" id="aboutMe"></textarea>
                   <span class="controll__hint">Hint</span>
                 </div>
@@ -80,8 +84,7 @@
                     <input
                       type="text"
                       id="email"
-                      value="example@redberry.ge"
-                      placeholder="გვარი"
+                      placeholder="example@redberry.ge"
                     />
                     <img
                       class="control__icon control__icon--success"
@@ -94,9 +97,11 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">უნდა მთავრდებოდეს @redberry.ge-თი</span>
                 </div>
               </div>
+                <br>
+                  <br>
               <div class="row">
                 <div class="controll controll--full">
                   <label class="controll__label">მობილურის ნომერი</label>
@@ -104,8 +109,7 @@
                     <input
                       type="text"
                       id="phone"
-                      value="+995 557 44 11 90"
-                      placeholder="გვარი"
+                      placeholder="+995557441190"
                     />
                     <img
                       class="control__icon control__icon--success"
@@ -118,7 +122,7 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</span>
                 </div>
               </div>
               <div class="row justify-between controlls-container">
@@ -130,9 +134,9 @@
             <div class="form-step" id="step-2" data-step>
               <div class="experiance-form">
                 <div class="controll controll--full">
-                  <label class="controll__label">ელ.ფოსტა</label>
+                  <label class="controll__label">თანამდებობა</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input class="job-input" type="text" placeholder="დეველოპერი, დიზაინერი, ა.შ." />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -144,12 +148,14 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">მინიმუმ 2 სიმბოლო</span>
                 </div>
+                  <br>
+                  <br>
                 <div class="controll controll--full">
-                  <label class="controll__label">ელ.ფოსტა</label>
+                  <label class="controll__label">დამსაქმებელი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input type="text" placeholder="დამსაქმებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -161,29 +167,35 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">მინიმუმ 2 სიმბოლო</span>
                 </div>
+                <br>
+                <br>
                 <div class="row justify-between">
                   <div class="controll">
-                    <label class="controll__label">ელ.ფოსტა</label>
+                    <label class="controll__label">დაწყების როცხვი</label>
                     <div class="input-container">
-                      <input type="date" placeholder="გვარი" />
+                      <input type="date" />
                     </div>
-                    <span class="controll__hint">Hint</span>
+
                   </div>
                   <div class="controll">
-                    <label class="controll__label">ელ.ფოსტა</label>
+                    <label class="controll__label">დამთავრების რიცხვი</label>
                     <div class="input-container">
-                      <input type="date" placeholder="გვარი" />
+                      <input type="date" />
                     </div>
-                    <span class="controll__hint">Hint</span>
+
                   </div>
                 </div>
+                  <br>
+                  <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea name=""></textarea>
-                  <span class="controll__hint">Hint</span>
+                  <textarea name="" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
+
                 </div>
+                  <br>
+                  <br>
                 <div class="devider-line"></div>
                 <button class="btn add-more" type="button">
                   მეტი გამოცდილების დამატება
@@ -201,7 +213,7 @@
                 <div class="controll controll--full">
                   <label class="controll__label">სასწავლებელი</label>
                   <div class="input-container">
-                    <input type="text" placeholder="გვარი" />
+                    <input type="text" placeholder="სასწავლებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -213,34 +225,44 @@
                       alt="icon"
                     />
                   </div>
-                  <span class="controll__hint">Hint</span>
+                  <span class="controll__hint">მინიმუმ 2 სიმბოლო</span>
                 </div>
+                <br>
+                <br>
                 <div class="row justify-between">
                   <div class="controll">
-                    <label class="controll__label">ელ.ფოსტა</label>
+                    <label class="controll__label">ხარისხი</label>
                     <div class="input-container">
                       <select name="" id="">
-                        <option value="1">op 1</option>
-                        <option value="1">op 1</option>
-                        <option value="1">op 1</option>
+                        <option value="1">საშუალო სკოლი დიპლომი</option>
+                        <option value="1">ზოგადსაგანმანატლებლო დიპლომი</option>
+                        <option value="1">ბაკალავრი</option>
+                        <option value="1">მაგისტრი</option>
+                        <option value="1">დოქტორი</option>
+                        <option value="1">ასოცირებული ხარისხი</option>
+                        <option value="1">სტუდენტი</option>
+                        <option value="1">კოლწჯი (ხარისხის გარშე)</option>
+                        <option value="1">სხვა</option>
                       </select>
                     </div>
-                    <span class="controll__hint">Hint</span>
+
                   </div>
                   <div class="controll">
-                    <label class="controll__label">ელ.ფოსტა</label>
+                    <label class="controll__label">დამთავრების რიცხვი</label>
                     <div class="input-container">
                       <input type="date" />
                     </div>
-                    <span class="controll__hint">Hint</span>
+
                   </div>
                 </div>
+                  <br>
+                  <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea name=""></textarea>
-                  <span class="controll__hint">Hint</span>
+                  <textarea name="" placeholder="განათლების აღწერა"></textarea>
                 </div>
-                <div>გამყოფი ხაზი</div>
+                <br>
+                <br>
                 <button class="btn add-more" type="button">
                   მეტი გამოცდილების დამატება
                 </button>
@@ -286,9 +308,10 @@
             <div class="devider-line"></div>
             <div>
               <h4 class="cv__subTitle">გამოცდილება</h4>
-              <p class="cv__secondarySubTitle">
-                React Native Developer, Microsoft
-              </p>
+                <h2 class="cv__secondarySubTitle">
+                  <span class="cv__job__title">react native</span>
+                  <span class="cv__employer">  microsoft</span>
+                </h2>
               <span class="cv__date">2020-09-23 - 2020-09-23</span>
               <p class="cv__text">
                 Experienced Javascript Native Developer with 5 years in the

@@ -151,3 +151,10 @@ input {
   color: #fff;
   margin-top: 45px;
 }
+@font-face {
+    font-family: 'Helvetica-Neue';
+    src: url("../assets/HelveticaNeue.ttc") format('truetype');
+}
+body {
+  font-family: Helvetica-Neue;
+}
