@@ -347,20 +347,18 @@
             location.href = "{{url_for('views.index')}}";
         };
         </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
         <script type="text/javascript">
             $(document).ready(function () {
               $("#myForm").submit(function (event) {
                 event.preventDefault();
 
                 var formData = {
-                  'name': $('input[id=name]').val(),
-                  'lastName': $('input[id=lastName]').val(),
-                  'email': $('input[id=email]').val(),
-                  'aboutMe': $('textarea[id=aboutMe]').val()
+                  'name': $('input[class=name]').val(),
+                  'lastName': $('input[class=lastName]').val(),
+                  'email': $('input[class=email]').val(),
+                  'aboutMe': $('textarea[class=aboutMe]').val()
                 };
-                console.log(formData)
+                console.log('ssdsdsd')
                 $.ajax({
                   type: "POST",
                   url: "{{ url_for('views.call_api') }}",
@@ -371,6 +369,7 @@
                 });
               });
             });
+
         </script>
 
   </body>

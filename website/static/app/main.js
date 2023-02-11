@@ -40,17 +40,17 @@ multiStepForm.addEventListener("click", (e) => {
   showCurrentStep();
 });
 
-function handelStep(step) {
-  handelFirstStep();
-  // switch (step) {
-  //   case 1:
-  //     handelFirstStep();
-  //     break;
-
-  //   default:
-  //     break;
-  // }
-}
+// function handelStep(step) {
+//   handelFirstStep();
+//   // switch (step) {
+//   //   case 1:
+//   //     handelFirstStep();
+//   //     break;
+//
+//   //   default:
+//   //     break;
+//   // }
+// }
 
 const nameInput = document.getElementById("name");
 const lastNameInput = document.getElementById("lastName");
@@ -70,62 +70,52 @@ const grade = document.getElementById("grade");
 const eduDesc = document.getElementById("eduDesc");
 
 
-fetch("/api/call", {
-  method:"POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(nameInput)
-})
-    .then(response => response.json())
-    .then(data => console.log("succes", data))
-    .catch(error => console.error("error", error))
 
 
-function handelFirstStep() {
-  firstStepErrors = { ...firstInitState };
-
-  if (!nameInput.value) {
-    firstStepErrors.name = "Required";
-  } else if (nameInput.value.length < 2) {
-    firstStepErrors.name = "Minimum 2 characters";
-  }
-
-  if (!lastNameInput.value) {
-    firstStepErrors.lastName = "Required";
-  } else if (lastNameInput.value.length < 2) {
-    firstStepErrors.lastName = "Minimum 2 characters";
-  }
-
-  if (!emailInput.value) {
-    firstStepErrors.email = "Required";
-  } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
-    firstStepErrors.email = "Must contain @redberry.ge";
-  }
-
-  if (!phoneInput.value) {
-    firstStepErrors.phone = "Required";
-  } else if (!checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/)) {
-    firstStepErrors.phone = "Must match Georgian phone number format";
-  }
-
-  const errorKeys = Object.keys(firstStepErrors);
-  errorKeys.map((key) => {
-    let hasError = false;
-    const errorText = firstStepErrors[key];
-
-    if (errorText) {
-      hasError = true;
-      showErrorState(document.getElementById(key), errorText);
-    } else {
-      hideErrorState(document.getElementById(key));
-    }
-
-    return hasError;
-  });
-
-  return !errorKeys.some((key) => firstStepErrors[key]);
-}
+// function handelFirstStep() {
+//   firstStepErrors = { ...firstInitState };
+//
+//   if (!nameInput.value) {
+//     firstStepErrors.name = "Required";
+//   } else if (nameInput.value.length < 2) {
+//     firstStepErrors.name = "Minimum 2 characters";
+//   }
+//
+//   if (!lastNameInput.value) {
+//     firstStepErrors.lastName = "Required";
+//   } else if (lastNameInput.value.length < 2) {
+//     firstStepErrors.lastName = "Minimum 2 characters";
+//   }
+//
+//   if (!emailInput.value) {
+//     firstStepErrors.email = "Required";
+//   } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
+//     firstStepErrors.email = "Must contain @redberry.ge";
+//   }
+//
+//   if (!phoneInput.value) {
+//     firstStepErrors.phone = "Required";
+//   } else if (!checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/)) {
+//     firstStepErrors.phone = "Must match Georgian phone number format";
+//   }
+//
+//   const errorKeys = Object.keys(firstStepErrors);
+//   errorKeys.map((key) => {
+//     let hasError = false;
+//     const errorText = firstStepErrors[key];
+//
+//     if (errorText) {
+//       hasError = true;
+//       showErrorState(document.getElementById(key), errorText);
+//     } else {
+//       hideErrorState(document.getElementById(key));
+//     }
+//
+//     return hasError;
+//   });
+//
+//   return !errorKeys.some((key) => firstStepErrors[key]);
+// }
 
 
 
@@ -296,10 +286,6 @@ aboutInput.addEventListener('input', (e) => {
 aboutInput.addEventListener('input', (e) => {
   const value =e.target.value;
   document.querySelector(".cv__text").textContent = `${value}`;
-});
-jobName.addEventListener('input', (e) => {
-  const value =e.target.value;
-  document.querySelector(".cv__job__title").textContent = `${value}`;
 });
 photoOpenerBtn.addEventListener("click", (e) => {
   photoInput.click();

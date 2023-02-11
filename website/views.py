@@ -24,13 +24,22 @@ def resume():
     return render_template("form.html"), 200
 
 
-@views.route("/form_submission", methods=['POST'])
+@views.route("/form_submission", methods=['POST', 'GET'])
 def call_api():
     form_data = request.form
     # Log the form data
     print(form_data)
 
     # Return a JSON response
+    return jsonify({
+        "message": "Form submitted successfully!",
+        "form_data": form_data
+    })
+
+
+@views.route("/api/test", methods=['GET'])
+def api_test():
+    form_data = request.form
     return jsonify({
         "message": "Form submitted successfully!",
         "form_data": form_data
