@@ -128,7 +128,7 @@
                 </div>
               </div>
               <div class="row justify-between controlls-container">
-                <button type="button" class="form-btn" data-next>
+                <button type="button" id="next_page" class="form-btn" data-next>
                   შემდეგი
                 </button>
               </div>
@@ -358,24 +358,53 @@
             location.href = "{{url_for('views.index')}}";
         };
         </script>
+   <script type="text/javascript">
+       var element = document.getElementById("next_page")
+       element.addEventListener("click",  (e)=> {
+          debugger
+          var value = document.querySelector(".step-container__step").innerHTML;
+          ++value
+          document.querySelector(".step-container__step").textContent = value;
+       })
+
+   </script>
 
    <script type="text/javascript">
             const form = document.querySelector('.myForm');
             form.addEventListener('submit', event => {
               event.preventDefault();
-              const name = document.querySelector('#name').value;
-              const lastName = document.querySelector('#lastName').value;
-              const photo = document.querySelector('#photo').files[0];
-              const aboutMe = document.querySelector('#aboutMe').value;
-              const email = document.querySelector('#email').value;
+              const nameInput = document.getElementById("name").value;
+              const lastNameInput = document.getElementById("lastName").value;
+              const photoInput = document.getElementById("photo").value;
+              const phoneInput = document.getElementById("phone").value;
+              const emailInput = document.getElementById("email").value;
+              const aboutInput = document.getElementById("aboutMe").value;
+              const schoolName = document.getElementById("schoolInput").value;
+              const jobName = document.getElementById("job-input").value;
+              const employer = document.getElementById("employer").value;
+              const jobStart = document.getElementById("startDate").value;
+              const jobEnd = document.getElementById("endDate").value;
+              const jobDescription = document.getElementById("jobDesc").value;
+              const grade = document.getElementById("grade").value;
+              const eduEnd = document.getElementById("eduend").value;
+              const eduDesc = document.getElementById("eduDesc").value;
 
               const formData = new FormData();
-              formData.append('name', name);
-              formData.append('lastName', lastName);
-              formData.append('photo', photo);
-              formData.append('aboutMe', aboutMe);
-              formData.append('email', email);
-
+              formData.append('name', nameInput);
+              formData.append('lastName', lastNameInput);
+              formData.append('phone', phoneInput);
+              formData.append('email', emailInput);
+              formData.append('aboutMe', aboutInput);
+              formData.append('photo', photoInput);
+              formData.append('school', schoolName)
+              formData.append('job', jobName)
+              formData.append('employer', employer)
+              formData.append('job_start', jobStart)
+              formData.append('job_end', jobEnd)
+              formData.append('job_desc', jobDescription)
+              formData.append('grade', grade)
+              formData.append('edu_end', eduEnd)
+              formData.append('edu_desc', eduDesc)
               fetch('/form_submission', {
                 method: 'POST',
                 body: formData
@@ -391,7 +420,7 @@
    </script>
    <script type="text/javascript">
             window.addEventListener("beforeunload", event => {
-            debugger
+
             const name = document.querySelector('#name').value;
             const lastName = document.querySelector('#lastName').value;
             const photo = document.querySelector('#photo').files[0];

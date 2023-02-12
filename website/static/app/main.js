@@ -5,6 +5,7 @@ const secondStepForm = document.querySelector(".experiance-form");
 const thirdStepForm = document.querySelector(".education-form");
 const addMoreButton = secondStepForm.querySelector(".add-more");
 const thirdStepAddMoreButton = thirdStepForm.querySelector(".add-more");
+const pageNum = document.querySelector(".step-container__step")
 
 const firstInitState = {
   name: "",
@@ -23,17 +24,21 @@ let currentStep = formSteps.findIndex((step) =>
 
 if (currentStep < 0) {
   currentStep = 0;
+
   formSteps[currentStep].classList.add("active");
 }
 
 multiStepForm.addEventListener("click", (e) => {
   let incrementor;
+  var pagenum = 1;
   if (e.target.matches("[data-next]")) {
     incrementor = 1;
+
   } else if (e.target.matches("[data-prev]")) {
     incrementor = -1;
   }
 
+  pageNum.textContent = `${pagenum}`;
   if (incrementor == null) return;
   currentStep += incrementor;
 
@@ -65,9 +70,8 @@ const employer = document.getElementById("employer");
 const jobStart = document.getElementById("startDate");
 const jobEnd = document.getElementById("endDate");
 const jobDescription = document.getElementById("jobDesc");
-const education = document.getElementById("controll__label.edu");
 const grade = document.getElementById("grade");
-const eduEnd = document.getElementById("eduend")
+const eduEnd = document.getElementById("eduend");
 const eduDesc = document.getElementById("eduDesc");
 
 
