@@ -183,3 +183,13 @@ form {
   margin-top: 160px;
   margin-bottom: 65px;
 }
+
+.cv__email__box,
+.cv__phone__box {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+.cv__phone{
+  padding-top: 30px;
+}

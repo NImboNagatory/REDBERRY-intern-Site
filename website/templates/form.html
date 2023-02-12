@@ -138,7 +138,7 @@
                 <div class="controll controll--full">
                   <label class="controll__label">თანამდებობა</label>
                   <div class="input-container">
-                    <input class="job-input" type="text" placeholder="დეველოპერი, დიზაინერი, ა.შ." />
+                    <input id="job-input" type="text" placeholder="დეველოპერი, დიზაინერი, ა.შ." />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -157,7 +157,7 @@
                 <div class="controll controll--full">
                   <label class="controll__label">დამსაქმებელი</label>
                   <div class="input-container">
-                    <input class="employer" type="text" placeholder="დამსაქმებელი" />
+                    <input id="employer" type="text" placeholder="დამსაქმებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -177,13 +177,13 @@
                   <div class="controll">
                     <label class="controll__label">დაწყების როცხვი</label>
                     <div class="input-container">
-                      <input class="startDate" type="date" />
+                      <input id="startDate" type="date" />
                     </div>
 
                   </div>
                   <div class="controll">
                     <label class="controll__label">დამთავრების რიცხვი</label>
-                    <div class="endDate" class="input-container">
+                    <div id="endDate" class="input-container">
                       <input type="date" />
                     </div>
 
@@ -193,7 +193,7 @@
                   <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea class="jobDesc" name="" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
+                  <textarea id="jobDesc" name="" placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"></textarea>
 
                 </div>
                   <br>
@@ -215,7 +215,7 @@
                 <div class="controll controll--full">
                   <label class="controll__label edu">სასწავლებელი</label>
                   <div class="input-container">
-                    <input class="schoolInput" type="text" placeholder="სასწავლებელი" />
+                    <input id="schoolInput" type="text" placeholder="სასწავლებელი" />
                     <img
                       class="control__icon control__icon--success"
                       src="{{ url_for('static', filename='assets/success.svg') }}"
@@ -236,15 +236,15 @@
                     <label class="controll__label">ხარისხი</label>
                     <div class="input-container">
                       <select name="" id="grade">
-                        <option value="1">საშუალო სკოლი დიპლომი</option>
-                        <option value="1">ზოგადსაგანმანატლებლო დიპლომი</option>
-                        <option value="1">ბაკალავრი</option>
-                        <option value="1">მაგისტრი</option>
-                        <option value="1">დოქტორი</option>
-                        <option value="1">ასოცირებული ხარისხი</option>
-                        <option value="1">სტუდენტი</option>
-                        <option value="1">კოლწჯი (ხარისხის გარშე)</option>
-                        <option value="1">სხვა</option>
+                        <option value="საშუალო სკოლი დიპლომი">საშუალო სკოლი დიპლომი</option>
+                        <option value="ზოგადსაგანმანატლებლო დიპლომი">ზოგადსაგანმანატლებლო დიპლომი</option>
+                        <option value="ბაკალავრი">ბაკალავრი</option>
+                        <option value="მაგისტრი">მაგისტრი</option>
+                        <option value="დოქტორი">დოქტორი</option>
+                        <option value="ასოცირებული ხარისხი">ასოცირებული ხარისხი</option>
+                        <option value="სტუდენტი">სტუდენტი</option>
+                        <option value="კოლწჯი (ხარისხის გარშე)">კოლწჯი (ხარისხის გარშე)</option>
+                        <option value="სხვა">სხვა</option>
                       </select>
                     </div>
 
@@ -252,7 +252,7 @@
                   <div class="controll">
                     <label class="controll__label">დამთავრების რიცხვი</label>
                     <div class="input-container">
-                      <input type="date" />
+                      <input id="eduend" type="date" />
                     </div>
 
                   </div>
@@ -261,7 +261,7 @@
                   <br>
                 <div class="controll">
                   <label class="controll__label">აღწერა</label>
-                  <textarea class="eduDesc" name="" placeholder="განათლების აღწერა"></textarea>
+                  <textarea id="eduDesc" name="" placeholder="განათლების აღწერა"></textarea>
                 </div>
                 <br>
                 <br>
@@ -287,22 +287,26 @@
                   <span class="cv__lastName">მუმლაძე</span>
                 </h2>
                 <div>
-                  <div class="cv__email">
+                    <div class="cv__email__box">
                     <img src="{{ url_for('static', filename='assets/email.svg') }}" alt="" />
+                  <div class="cv__email">
                     <p>anzorr666@redberry.ge</p>
                   </div>
-                  <div class="cv__phone">
+                        </div>
+                    <div class="cv__phone__box">
                     <img src="{{ url_for('static', filename='assets/phone.svg') }}" alt="" />
+                  <div class="cv__phone">
                     <p>+995 597 63 45 16</p>
                   </div>
+                    </div>
                 </div>
                 <h4 class="cv__subTitle">ჩემ შესახებ</h4>
                 <p class="cv__text">
                   ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები
                   გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ.
                 </p>
+                  <br>
               </div>
-
               <div>
                 <img src="{{ url_for('static', filename='assets/cv-photo.png') }}" alt="" class="cv__img" />
               </div>
@@ -314,22 +318,29 @@
                   <span class="cv__job__title">react native</span>
                   <span class="cv__employer">  microsoft</span>
                 </h2>
-              <span class="cv__date">2020-09-23 - 2020-09-23</span>
-              <p class="cv__text">
+                <br>
+                <div>
+                    <span class="cv__date_start">2020-09-23</span>
+                    -
+                    <span class="cv__date_end">2020-09-23</span>
+                </div>
+                <br>
+              <p class="cv__text jobdescr">
                 Experienced Javascript Native Developer with 5 years in the
                 industry. proficient withreact. Used problem-solving aptitude to
                 encahge application performance by 14%.created data
                 visualisation tools and integrated designs.
               </p>
+                <br>
               <div class="devider-line"></div>
             </div>
             <div>
-              <h4 class="cv__subTitle">გამოცდილება</h4>
-              <p class="cv__secondarySubTitle" id="school">
-                React Native Developer, Microsoft
-              </p>
-              <span class="cv__date">2020-09-23 - 2020-09-23</span>
-              <p class="cv__text">
+              <h4 class="cv__subTitle">განათლება</h4>
+              <h2 class="cv__secondarySubTitle" id="school">
+                <span class="university">BTU</span>, <span class="grade">Student</span>
+              </h2>
+              <span class="cv__date_edu_end">2020-09-23</span>
+              <p class="cv__text_edu">
                 Experienced Javascript Native Developer with 5 years in the
                 industry. proficient withreact. Used problem-solving aptitude to
                 encahge application performance by 14%.created data
@@ -347,30 +358,51 @@
             location.href = "{{url_for('views.index')}}";
         };
         </script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-              $("#myForm").submit(function (event) {
-                event.preventDefault();
 
-                var formData = {
-                  'name': $('input[class=name]').val(),
-                  'lastName': $('input[class=lastName]').val(),
-                  'email': $('input[class=email]').val(),
-                  'aboutMe': $('textarea[class=aboutMe]').val()
-                };
-                console.log('ssdsdsd')
-                $.ajax({
-                  type: "POST",
-                  url: "{{ url_for('views.call_api') }}",
-                  data: formData,
-                  success: function () {
-                    alert('Form data was successfully sent to the server.');
-                  }
+   <script type="text/javascript">
+            const form = document.querySelector('.myForm');
+            form.addEventListener('submit', event => {
+              event.preventDefault();
+              const name = document.querySelector('#name').value;
+              const lastName = document.querySelector('#lastName').value;
+              const photo = document.querySelector('#photo').files[0];
+              const aboutMe = document.querySelector('#aboutMe').value;
+              const email = document.querySelector('#email').value;
+
+              const formData = new FormData();
+              formData.append('name', name);
+              formData.append('lastName', lastName);
+              formData.append('photo', photo);
+              formData.append('aboutMe', aboutMe);
+              formData.append('email', email);
+
+              fetch('/form_submission', {
+                method: 'POST',
+                body: formData
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => {
+                  console.error(error);
                 });
-              });
             });
+   </script>
+   <script type="text/javascript">
+            window.addEventListener("beforeunload", event => {
+            debugger
+            const name = document.querySelector('#name').value;
+            const lastName = document.querySelector('#lastName').value;
+            const photo = document.querySelector('#photo').files[0];
+            const aboutMe = document.querySelector('#aboutMe').value;
+            const email = document.querySelector('#email').value;
 
-        </script>
-
+            localStorage.setItem('name', name.value);
+            localStorage.setItem('lastName', lastName.value);
+            localStorage.setItem('aboutMe', aboutMe.value);
+            localStorage.setItem('email', email.value);
+            });
+   </script>
   </body>
 </html>

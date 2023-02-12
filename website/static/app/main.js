@@ -67,6 +67,7 @@ const jobEnd = document.getElementById("endDate");
 const jobDescription = document.getElementById("jobDesc");
 const education = document.getElementById("controll__label.edu");
 const grade = document.getElementById("grade");
+const eduEnd = document.getElementById("eduend")
 const eduDesc = document.getElementById("eduDesc");
 
 
@@ -291,9 +292,49 @@ photoOpenerBtn.addEventListener("click", (e) => {
   photoInput.click();
 });
 
+jobName.addEventListener("input", (e) =>{
+  const value =e.target.value;
+  document.querySelector(".cv__job__title").textContent = `${value}`;
+})
 
+employer.addEventListener("input", (e)=>{
+  const value =e.target.value;
+  document.querySelector(".cv__employer").textContent = `${value}`;
+})
 
+jobStart.addEventListener("input", (e)=>{
+  const value =e.target.value;
+  document.querySelector(".cv__date_start").textContent = `${value}`;
+})
+jobEnd.addEventListener("input", (e)=>{
+  const value =e.target.value;
+  document.querySelector(".cv__date_end").textContent = `${value}`;
+})
 
+jobDescription.addEventListener("input", (e)=>{
+  const value =e.target.value;
+  document.querySelector(".jobdescr").textContent = `${value}`;
+})
+
+schoolName.addEventListener("input", (e)=>{
+   const value =e.target.value;
+   document.querySelector(".university").textContent = `${value}`;
+})
+
+grade.addEventListener("input", (e)=>{
+  const value =e.target.value;
+   document.querySelector(".grade").textContent = `${value}`;
+})
+
+eduEnd.addEventListener("input", (e)=>{
+   const value =e.target.value;
+   document.querySelector(".cv__date_edu_end").textContent = `${value}`;
+})
+
+eduDesc.addEventListener("input", (e)=>{
+  const value =e.target.value;
+   document.querySelector(".cv__text_edu").textContent = `${value}`;
+})
 window.onbeforeunload = function() {
     localStorage.setItem("name", $('.name').val());
     localStorage.setItem("surname", $('.lastName').val());
