@@ -19,7 +19,7 @@ body {
 .form__go-back {
   position: absolute;
   top: 0;
-  left: 0px;
+  left: -71px;
 }
 
 .cv-section {
