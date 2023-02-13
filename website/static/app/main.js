@@ -347,6 +347,29 @@ window.onbeforeunload = function() {
     localStorage.setItem("aboutMe", $('.aboutMe').val());
 };
 
+function convertImageToBinary(imageSrc, callback) {
+              // Create an image object
+              var image = new Image();
 
+              // Set the source of the image
+              image.src = imageSrc;
+
+              // Wait for the image to load
+              image.onload = function() {
+                // Create a canvas element
+                var canvas = document.createElement('canvas');
+                canvas.width = image.width;
+                canvas.height = image.height;
+
+                // Draw the image on the canvas
+                canvas.getContext('2d').drawImage(image, 0, 0);
+
+                // Get the binary data from the canvas
+                var binaryData = canvas.toDataURL('image/jpeg').split(',')[1];
+
+                // Return the binary data through the callback
+                callback(binaryData);
+              };
+            }
 
 

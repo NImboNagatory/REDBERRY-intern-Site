@@ -5,7 +5,32 @@ api_url = "https://resume.redberryinternship.ge/api/cvs"
 
 
 def request_to_api(data):
-    return post(api_url, json=data)
+    to_api = {
+        "name": data['name'],
+        "surname": data['lastName'],
+        "email": data['"email"'],
+        "phone_number": data['phone'],
+        "experiences": [
+            {
+                "position": data["job"],
+                "employer": data["employer"],
+                "start_date": data["job_start"],
+                "due_date": data["job_end"],
+                "description": data["job_desc"]
+            }
+        ],
+        "educations": [
+            {
+                "institute": data["school"],
+                "degree": data["grade"],
+                "due_date": data["edu_end"],
+                "description":  data["edu_desc"]
+            }
+        ],
+        "image": data["image"],
+        "about_me": data["aboutMe"]
+    }
+    return post(api_url, json=to_api)
 
 
 def create_app():

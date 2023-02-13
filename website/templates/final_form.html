@@ -1,10 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formPageStyles.css') }}" />
+    <link rel="icon" type="image/png" sizes="48x48" href="{{url_for('static', filename='assets/icons8-red-circle-48.webp')}}" />
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Final Resume</title>
 </head>
 <body>
-
+    <section class="cv-section">
+        <div class="cv">
+          <div>
+            <div class="cv__header">
+              <div>
+                <h2 class="cv__fullName">
+                  <span class="cv__name">ანზორ</span>
+                  <span class="cv__lastName">მუმლაძე</span>
+                </h2>
+                <div>
+                    <div class="cv__email__box">
+                    <img src="{{ url_for('static', filename='assets/email.svg') }}" alt="" />
+                  <div class="cv__email">
+                    <p>anzorr666@redberry.ge</p>
+                  </div>
+                        </div>
+                    <div class="cv__phone__box">
+                    <img src="{{ url_for('static', filename='assets/phone.svg') }}" alt="" />
+                  <div class="cv__phone">
+                    <p>+995 597 63 45 16</p>
+                  </div>
+                    </div>
+                </div>
+                <h4 class="cv__subTitle">ჩემ შესახებ</h4>
+                <p class="cv__text">
+                  ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები
+                  გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ.
+                </p>
+                  <br>
+              </div>
+              <div>
+                <img src="{{ url_for('static', filename='assets/cv-photo.png') }}" alt="" class="cv__img" />
+              </div>
+            </div>
+            <div class="devider-line"></div>
+            <div>
+              <h4 class="cv__subTitle">გამოცდილება</h4>
+                <h2 class="cv__secondarySubTitle">
+                  <span class="cv__job__title">react native</span>
+                  <span class="cv__employer">  microsoft</span>
+                </h2>
+                <br>
+                <div>
+                    <span class="cv__date_start">2020-09-23</span>
+                    -
+                    <span class="cv__date_end">2020-09-23</span>
+                </div>
+                <br>
+              <p class="cv__text jobdescr">
+                Experienced Javascript Native Developer with 5 years in the
+                industry. proficient withreact. Used problem-solving aptitude to
+                encahge application performance by 14%.created data
+                visualisation tools and integrated designs.
+              </p>
+                <br>
+              <div class="devider-line"></div>
+            </div>
+            <div>
+              <h4 class="cv__subTitle">განათლება</h4>
+              <h2 class="cv__secondarySubTitle" id="school">
+                <span class="university">BTU</span>, <span class="grade">Student</span>
+              </h2>
+              <span class="cv__date_edu_end">2020-09-23</span>
+              <p class="cv__text_edu">
+                Experienced Javascript Native Developer with 5 years in the
+                industry. proficient withreact. Used problem-solving aptitude to
+                encahge application performance by 14%.created data
+                visualisation tools and integrated designs.
+              </p>
+              <div class="devider-line"></div>
+            </div>
+          </div>
+          <img class="cv__logo-img" src="{{ url_for('static', filename='assets/cv-logo.svg') }}" alt="" />
+        </div>
+      </section>
 </body>
 </html>

@@ -16,7 +16,7 @@
   <body>
     <main class="form-page">
       <section class="form-section">
-        <form data-multi-step method="POST" class="myForm" action="/form_submission">
+        <form data-multi-step method="POST" class="myForm">
           <img id="myButton_back" class="form__go-back" src="{{ url_for('static', filename='assets/go-back.png') }}" alt="" />
           <div class="form-header">
             <h3 class="form-header__title">პირადი ინფო</h3>
@@ -236,7 +236,7 @@
                     <label class="controll__label">ხარისხი</label>
                     <div class="input-container">
                       <select name="" id="grade">
-                        <option value="საშუალო სკოლი დიპლომი">საშუალო სკოლი დიპლომი</option>
+                        <option value="საშუალო სკოლის დიპლომი">საშუალო სკოლის დიპლომი</option>
                         <option value="ზოგადსაგანმანატლებლო დიპლომი">ზოგადსაგანმანატლებლო დიპლომი</option>
                         <option value="ბაკალავრი">ბაკალავრი</option>
                         <option value="მაგისტრი">მაგისტრი</option>
@@ -375,7 +375,7 @@
               event.preventDefault();
               const nameInput = document.getElementById("name").value;
               const lastNameInput = document.getElementById("lastName").value;
-              const photoInput = document.getElementById("photo").value;
+              const photoInput = document.getElementById("photo").files[0];
               const phoneInput = document.getElementById("phone").value;
               const emailInput = document.getElementById("email").value;
               const aboutInput = document.getElementById("aboutMe").value;
@@ -389,13 +389,15 @@
               const eduEnd = document.getElementById("eduend").value;
               const eduDesc = document.getElementById("eduDesc").value;
 
+
               const formData = new FormData();
               formData.append('name', nameInput);
               formData.append('lastName', lastNameInput);
               formData.append('phone', phoneInput);
               formData.append('email', emailInput);
               formData.append('aboutMe', aboutInput);
-              formData.append('photo', photoInput);
+
+              convertImageToBinary(photoInput, formData.append('image' ,binaryData));
               formData.append('school', schoolName)
               formData.append('job', jobName)
               formData.append('employer', employer)
@@ -405,17 +407,20 @@
               formData.append('grade', grade)
               formData.append('edu_end', eduEnd)
               formData.append('edu_desc', eduDesc)
-              fetch('/form_submission', {
+              fetch(`/form_submission`, {
                 method: 'POST',
                 body: formData
               })
                 .then(response => response.json())
                 .then(data => {
+                  window.location.replace('/resume/final/');
                   console.log(data);
+
                 })
                 .catch(error => {
                   console.error(error);
                 });
+
             });
    </script>
    <script type="text/javascript">

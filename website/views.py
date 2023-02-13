@@ -1,6 +1,8 @@
+
+
 from flask import Blueprint, render_template, jsonify, request
 from .func import list_degrees, security_headers
-
+from json import dumps
 views = Blueprint('views', __name__)
 
 
@@ -26,24 +28,16 @@ def resume():
 
 @views.route("/form_submission", methods=['POST', 'GET'])
 def call_api():
-    form_data = request.form
-    # Log the form data
-    print(form_data)
-
-    # Return a JSON response
-    return jsonify({
-        "message": "Form submitted successfully!",
-        "form_data": form_data
-    })
+    form_data = request.form.to_dict()
+    with open(f"./text/{form_data['name']}.txt", 'w') as file:
+        file.write(dumps(form_data))
+    return "200"
 
 
-@views.route("/api/test", methods=['GET'])
-def api_test():
-    form_data = request.form
-    return jsonify({
-        "message": "Form submitted successfully!",
-        "form_data": form_data
-    })
+@views.route('/resume/final/')
+def final_form():
+
+    return render_template("final_form.html"), 200
 
 
 @views.errorhandler(404)
