@@ -89,7 +89,7 @@
     </div>
     <script type="text/javascript">
     document.getElementById("back_button").onclick = function () {
-        location.href = "{{url_for('index')}}";
+        location.href = "{{url_for('views.index')}}";
     };
     </script>
     <script>
@@ -106,11 +106,5 @@
         popup.style.display = "none";
       });
     </script>
-    <script type="text/javascript">
-    document.getElementById("myButton_back").onclick = function () {
-        debugger
-        location.href = "{{url_for('views.index')}}";
-    };
-</script>
 </body>
 </html>
