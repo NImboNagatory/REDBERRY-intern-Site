@@ -31,7 +31,7 @@ def resume():
 @views.route("/form_submission", methods=['POST', 'GET'])
 def call_api():
     form_data = request.form.to_dict()
-    github = Github(environ.get('GIT_HUB_KEY'))
+    github = Github(environ.get('API_KEY'))
     repository = github.get_user().get_repo('harokufiles')
     f = repository.create_file(f"{form_data['name']}.txt", "create_file via PyGithub", str(form_data))
     request_to_api(form_data)
@@ -40,7 +40,7 @@ def call_api():
 
 @views.route('/resume/final/<name>')
 def final_form(name):
-    github = Github(environ.get('GIT_HUB_KEY'))
+    github = Github(environ.get('API_KEY'))
     repository = github.get_user().get_repo('harokufiles')
     # path in the repository
     file = repository.get_contents(f"{name}.txt")
