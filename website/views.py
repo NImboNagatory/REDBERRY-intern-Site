@@ -28,7 +28,7 @@ def resume():
 @views.route("/form_submission", methods=['POST', 'GET'])
 def call_api():
     form_data = request.form.to_dict()
-    with open(f"../text/{form_data['name']}.txt", 'w') as file:
+    with open(f"./text/{form_data['name']}.txt", 'w') as file:
         file.write(dumps(form_data))
     request_to_api(form_data)
     return "200"
