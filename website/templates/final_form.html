@@ -9,6 +9,12 @@
     <title>Final Resume</title>
 </head>
 <body>
+<div class="popup" id="popup">
+    <button id="close-button">X</button>
+  <p>Developer could not process your photo,<br> please forgive him, it's his first javascript Project</p>
+
+</div>
+<div class="cv_box">
     <section class="cv-section">
         <div class="cv">
           <div>
@@ -84,5 +90,20 @@
           <img class="cv__logo-img" src="{{ url_for('static', filename='assets/cv-logo.svg') }}" alt="" />
         </div>
       </section>
+    </div>
+    <script>
+      let popup = document.getElementById("popup");
+      let closeButton = document.getElementById("close-button");
+
+      document.addEventListener("mouseover", function(event) {
+        popup.style.display = "block";
+        popup.style.left = event.clientX + "px";
+        popup.style.top = event.clientY + "px";
+      });
+
+      closeButton.addEventListener("click", function() {
+        popup.style.display = "none";
+      });
+    </script>
 </body>
 </html>

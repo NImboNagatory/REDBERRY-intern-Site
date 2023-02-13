@@ -412,12 +412,12 @@
                 formData.append('email', emailInput);
                 formData.append('aboutMe', aboutInput);
 
-                const reader = new FileReader();
-                reader.readAsArrayBuffer(photoInput.files[0]);
-                reader.onload = function () {
-                  const imageByteArray = new Uint8Array(reader.result);
-                  formData.append('image', imageByteArray, photoInput.name);
-                };
+                {#const reader = new FileReader();#}
+                {#reader.readAsArrayBuffer(photoInput.files[0]);#}
+                {#reader.onload = function () {#}
+                {#  const imageByteArray = new Uint8Array(reader.result);#}
+                {#  formData.append('image', imageByteArray, photoInput.name);#}
+                {#  {;#}
 
                 formData.append('school', schoolName)
                 formData.append('job', jobName)

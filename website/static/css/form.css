@@ -170,3 +170,20 @@ input {
 body {
   font-family: Helvetica-Neue;
 }
+.cv_box{
+    max-width: 1000px;
+    width: 100%;
+    height: 100vh;
+    padding: 0 70px;
+    margin: auto;
+}
+.popup {
+    position: absolute;
+    display: none;
+    width: 200px;
+    height: 150px;
+    background-color: lightgray;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+  }
