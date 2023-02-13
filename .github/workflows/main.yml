@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  API_KEY: ${{ git_key.GIT_HUB_KEY }}
+  API_KEY: ${{ secrets.GIT_HUB_KEY }}
 
 jobs:
   deploy:
