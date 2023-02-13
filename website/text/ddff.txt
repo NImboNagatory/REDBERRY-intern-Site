@@ -1,1 +1,0 @@
-{"name": "ddff", "lastName": "dfdfdf", "phone": "dfdf", "email": "dfdf", "aboutMe": "dfdfdf", "school": "", "job": "", "employer": "", "job_start": "", "job_end": "undefined", "job_desc": "", "grade": "\u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10dd \u10e1\u10d9\u10dd\u10da\u10d8\u10e1 \u10d3\u10d8\u10de\u10da\u10dd\u10db\u10d8", "edu_end": "", "edu_desc": ""}
