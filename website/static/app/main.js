@@ -30,7 +30,7 @@ if (currentStep < 0) {
 
 multiStepForm.addEventListener("click", (e) => {
   let incrementor;
-  var pagenum = 1;
+
   if (e.target.matches("[data-next]")) {
     incrementor = 1;
 
@@ -38,7 +38,6 @@ multiStepForm.addEventListener("click", (e) => {
     incrementor = -1;
   }
 
-  pageNum.textContent = `${pagenum}`;
   if (incrementor == null) return;
   currentStep += incrementor;
 
@@ -125,71 +124,71 @@ const eduDesc = document.getElementById("eduDesc");
 
 
 
-// function handelFirstStep() {
-//   firstStepErrors = { ...firstInitState };
-//
-//   // checkElementLength(nameInput);
-//   // checkElementLength(lastNameInput);
-//   // if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
-//   //   showErrorState(emailInput, "უნდა მთავრდებოდეს @redberry.ge-თი");
-//   // }
-//   // if (!checkRegex(phoneInput, /^\+\d{3} \d{3} \d{2} \d{2} \d{2}$/)) {
-//   //   showErrorState(
-//   //     phoneInput,
-//   //     "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
-//   //   );
-//   // }
-//   if (!nameInput.value) {
-//     firstStepErrors.name = "სავალდებულო";
-//   } else if (nameInput.value.length < 2) {
-//     firstStepErrors.name = "მინიმუმ 2 სიმბოლო";
-//   }
-//
-//   if (!lastNameInput.value) {
-//     firstStepErrors.lastName = "სავალდებულო";
-//   } else if (lastNameInput.value.length < 2) {
-//     firstStepErrors.lastName = "მინიმუმ 2 სიმბოლო";
-//   }
-//
-//   // if (!photoInput.files.length) {
-//   //   firstStepErrors.photo = "სავალდებულოა";
-//   // }
-//
-//   if (!emailInput.value) {
-//     firstStepErrors.email = "სავალდებულოა";
-//   } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
-//     firstStepErrors.email = "უნდა მთავრდებოდეს @redberry.ge-თი";
-//   }
-//
-//   if (!phoneInput.value) {
-//     firstStepErrors.phone = "სავალდებულოა";
-//   } else if (
-//     !checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/ )
-//   ) {
-//     firstStepErrors.phone =
-//       "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს";
-//   }
-//
-//   const errorKeys = Object.keys(firstStepErrors);
-//
-//   errorKeys.map((key) => {
-//     let hasError = false;
-//
-//     const errorText = firstStepErrors[key];
-//     if (errorText) {
-//       hasError = true;
-//       showErrorState(document.getElementById(key), errorText);
-//     } else {
-//       console.log(key);
-//       clearErrorState(document.getElementById(key));
-//     }
-//
-//     if (!hasError) {
-//       currentStep = 1;
-//       showCurrentStep();
-//     }
-//   });
-// }
+function handelFirstStep() {
+  firstStepErrors = { ...firstInitState };
+
+  checkElementLength(nameInput);
+  checkElementLength(lastNameInput);
+  if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
+    showErrorState(emailInput, "უნდა მთავრდებოდეს @redberry.ge-თი");
+  }
+  if (!checkRegex(phoneInput, /^\+\d{3} \d{3} \d{2} \d{2} \d{2}$/)) {
+    showErrorState(
+      phoneInput,
+      "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
+    );
+  }
+  if (!nameInput.value) {
+    firstStepErrors.name = "სავალდებულო";
+  } else if (nameInput.value.length < 2) {
+    firstStepErrors.name = "მინიმუმ 2 სიმბოლო";
+  }
+
+  if (!lastNameInput.value) {
+    firstStepErrors.lastName = "სავალდებულო";
+  } else if (lastNameInput.value.length < 2) {
+    firstStepErrors.lastName = "მინიმუმ 2 სიმბოლო";
+  }
+
+  // if (!photoInput.files.length) {
+  //   firstStepErrors.photo = "სავალდებულოა";
+  // }
+
+  if (!emailInput.value) {
+    firstStepErrors.email = "სავალდებულოა";
+  } else if (!checkRegex(emailInput.value, /@redberry\.ge/)) {
+    firstStepErrors.email = "უნდა მთავრდებოდეს @redberry.ge-თი";
+  }
+
+  if (!phoneInput.value) {
+    firstStepErrors.phone = "სავალდებულოა";
+  } else if (
+    !checkRegex(phoneInput.value, /^\+995\s5\d{2}\s\d{2}\s\d{2}\s\d{2}$/ )
+  ) {
+    firstStepErrors.phone =
+      "უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს";
+  }
+
+  const errorKeys = Object.keys(firstStepErrors);
+
+  errorKeys.map((key) => {
+    let hasError = false;
+
+    const errorText = firstStepErrors[key];
+    if (errorText) {
+      hasError = true;
+      showErrorState(document.getElementById(key), errorText);
+    } else {
+      console.log(key);
+      clearErrorState(document.getElementById(key));
+    }
+
+    if (!hasError) {
+      currentStep = 1;
+      showCurrentStep();
+    }
+  });
+}
 
 const handleAddMoreButtonClick = (e) => {
   const formContainers = document.querySelectorAll(".experiance-form");

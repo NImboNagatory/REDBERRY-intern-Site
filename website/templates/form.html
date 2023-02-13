@@ -204,8 +204,8 @@
                 </button>
               </div>
               <div class="row justify-between controlls-container">
-                <button type="button" class="form-btn" data-prev>უკან</button>
-                <button type="button" class="form-btn" data-next>
+                <button  id="back_back_page" type="button" class="form-btn" data-prev>უკან</button>
+                <button id="Next_next_page" type="button" class="form-btn" data-next>
                   შემდეგი
                 </button>
               </div>
@@ -270,7 +270,7 @@
                 </button>
               </div>
               <div class="row justify-between controlls-container">
-                <button type="button" class="form-btn" data-prev>უკან</button>
+                <button id="back_page" type="button" class="form-btn" data-prev>უკან</button>
                 <button type="submit" class="form-btn">შენახვა</button>
               </div>
             </div>
@@ -361,21 +361,36 @@
    <script type="text/javascript">
        var element = document.getElementById("next_page")
        element.addEventListener("click",  (e)=> {
-          debugger
-          var value = document.querySelector(".step-container__step").innerHTML;
-          ++value
-          document.querySelector(".step-container__step").textContent = value;
+          document.querySelector(".step-container__step").textContent = '2';
        })
-
    </script>
-
+    <script type="text/javascript">
+       var element = document.getElementById("Next_next_page")
+       element.addEventListener("click",  (e)=> {
+          document.querySelector(".step-container__step").textContent = '3';
+       })
+       back_page
+   </script>
+   <script type="text/javascript">
+       var element = document.getElementById("back_page")
+       element.addEventListener("click",  (e)=> {
+          document.querySelector(".step-container__step").textContent = '2';
+       })
+       back_back_page
+   </script>
+    <script type="text/javascript">
+       var element = document.getElementById("back_back_page")
+       element.addEventListener("click",  (e)=> {
+          document.querySelector(".step-container__step").textContent = '1';
+       })
+   </script>
    <script type="text/javascript">
             const form = document.querySelector('.myForm');
             form.addEventListener('submit', event => {
               event.preventDefault();
               const nameInput = document.getElementById("name").value;
               const lastNameInput = document.getElementById("lastName").value;
-              const photoInput = document.getElementById("photo").files[0];
+              const photoInput = document.getElementById("photo");
               const phoneInput = document.getElementById("phone").value;
               const emailInput = document.getElementById("email").value;
               const aboutInput = document.getElementById("aboutMe").value;
@@ -391,35 +406,41 @@
 
 
               const formData = new FormData();
-              formData.append('name', nameInput);
-              formData.append('lastName', lastNameInput);
-              formData.append('phone', phoneInput);
-              formData.append('email', emailInput);
-              formData.append('aboutMe', aboutInput);
+                formData.append('name', nameInput);
+                formData.append('lastName', lastNameInput);
+                formData.append('phone', phoneInput);
+                formData.append('email', emailInput);
+                formData.append('aboutMe', aboutInput);
 
-              convertImageToBinary(photoInput, formData.append('image' ,binaryData));
-              formData.append('school', schoolName)
-              formData.append('job', jobName)
-              formData.append('employer', employer)
-              formData.append('job_start', jobStart)
-              formData.append('job_end', jobEnd)
-              formData.append('job_desc', jobDescription)
-              formData.append('grade', grade)
-              formData.append('edu_end', eduEnd)
-              formData.append('edu_desc', eduDesc)
-              fetch(`/form_submission`, {
-                method: 'POST',
-                body: formData
-              })
-                .then(response => response.json())
-                .then(data => {
-                  window.location.replace('/resume/final/');
-                  console.log(data);
+                const reader = new FileReader();
+                reader.readAsArrayBuffer(photoInput.files[0]);
+                reader.onload = function () {
+                  const imageByteArray = new Uint8Array(reader.result);
+                  formData.append('image', imageByteArray, photoInput.name);
+                };
 
+                formData.append('school', schoolName)
+                formData.append('job', jobName)
+                formData.append('employer', employer)
+                formData.append('job_start', jobStart)
+                formData.append('job_end', jobEnd)
+                formData.append('job_desc', jobDescription)
+                formData.append('grade', grade)
+                formData.append('edu_end', eduEnd)
+                formData.append('edu_desc', eduDesc)
+
+                fetch(`/form_submission`, {
+                  method: 'POST',
+                  body: formData
                 })
-                .catch(error => {
-                  console.error(error);
-                });
+                  .then(response => response.json())
+                  .then(data => {
+                    window.location.replace(`/resume/final/${nameInput}`);
+                    console.log(data);
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
 
             });
    </script>

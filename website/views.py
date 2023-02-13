@@ -1,8 +1,7 @@
 
-
 from flask import Blueprint, render_template, jsonify, request
 from .func import list_degrees, security_headers
-from json import dumps
+from json import dumps, loads
 views = Blueprint('views', __name__)
 
 
@@ -34,10 +33,11 @@ def call_api():
     return "200"
 
 
-@views.route('/resume/final/')
-def final_form():
-
-    return render_template("final_form.html"), 200
+@views.route('/resume/final/<name>')
+def final_form(name):
+    with open(f"./text/{name}.txt") as data:
+        js = loads(data.read())
+        return render_template("final_form.html", data=js), 200
 
 
 @views.errorhandler(404)
