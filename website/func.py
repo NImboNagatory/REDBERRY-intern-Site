@@ -8,7 +8,7 @@ def request_to_api(data):
     to_api = {
         "name": data['name'],
         "surname": data['lastName'],
-        "email": data['"email"'],
+        "email": data['email'],
         "phone_number": data['phone'],
         "experiences": [
             {
@@ -27,7 +27,6 @@ def request_to_api(data):
                 "description":  data["edu_desc"]
             }
         ],
-        "image": data["image"],
         "about_me": data["aboutMe"]
     }
     return post(api_url, json=to_api)

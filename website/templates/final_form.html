@@ -10,8 +10,7 @@
 </head>
 <body>
 <div class="popup" id="popup">
-    <button id="close-button">X</button>
-  <p>Developer could not process your photo,<br> please forgive him, it's his first javascript Project</p>
+  <p>Developer could not  process your photo, <br> please forgive him, it's his first javascript Project</p>
 
 </div>
 <div class="cv_box">
@@ -21,27 +20,26 @@
             <div class="cv__header">
               <div>
                 <h2 class="cv__fullName">
-                  <span class="cv__name">ანზორ</span>
-                  <span class="cv__lastName">მუმლაძე</span>
+                  <span class="cv__name">{{ data.name }}</span>
+                  <span class="cv__lastName">{{ data.lastName }}</span>
                 </h2>
                 <div>
                     <div class="cv__email__box">
                     <img src="{{ url_for('static', filename='assets/email.svg') }}" alt="" />
                   <div class="cv__email">
-                    <p>anzorr666@redberry.ge</p>
+                    <p>{{ data.email }}</p>
                   </div>
                         </div>
                     <div class="cv__phone__box">
                     <img src="{{ url_for('static', filename='assets/phone.svg') }}" alt="" />
                   <div class="cv__phone">
-                    <p>+995 597 63 45 16</p>
+                    <p>{{ data.phone }}</p>
                   </div>
                     </div>
                 </div>
                 <h4 class="cv__subTitle">ჩემ შესახებ</h4>
                 <p class="cv__text">
-                  ძალიან მიყვარს დიზაინის კეთება. დილით ადრე რომ ავდგები
-                  გამამხნევებელი ვარჯიშების მაგიერ დიზაინს ვაკეთებ.
+                  {{ data.aboutMe }}
                 </p>
                   <br>
               </div>
@@ -53,21 +51,18 @@
             <div>
               <h4 class="cv__subTitle">გამოცდილება</h4>
                 <h2 class="cv__secondarySubTitle">
-                  <span class="cv__job__title">react native</span>
-                  <span class="cv__employer">  microsoft</span>
+                  <span class="cv__job__title">{{ data.job }}</span>
+                  <span class="cv__employer">{{ data.employer }}</span>
                 </h2>
                 <br>
                 <div>
-                    <span class="cv__date_start">2020-09-23</span>
+                    <span class="cv__date_start">{{ data.job_start }}</span>
                     -
-                    <span class="cv__date_end">2020-09-23</span>
+                    <span class="cv__date_end">{{ data.job_end }}</span>
                 </div>
                 <br>
               <p class="cv__text jobdescr">
-                Experienced Javascript Native Developer with 5 years in the
-                industry. proficient withreact. Used problem-solving aptitude to
-                encahge application performance by 14%.created data
-                visualisation tools and integrated designs.
+                {{ data.job_desc }}
               </p>
                 <br>
               <div class="devider-line"></div>
@@ -75,14 +70,11 @@
             <div>
               <h4 class="cv__subTitle">განათლება</h4>
               <h2 class="cv__secondarySubTitle" id="school">
-                <span class="university">BTU</span>, <span class="grade">Student</span>
+                <span class="university">{{ data.school }}</span>, <span class="grade">{{ data.grade }}</span>
               </h2>
-              <span class="cv__date_edu_end">2020-09-23</span>
+              <span class="cv__date_edu_end">{{ data.edu_end }}</span>
               <p class="cv__text_edu">
-                Experienced Javascript Native Developer with 5 years in the
-                industry. proficient withreact. Used problem-solving aptitude to
-                encahge application performance by 14%.created data
-                visualisation tools and integrated designs.
+                {{ data.edu_desc }}
               </p>
               <div class="devider-line"></div>
             </div>

@@ -1,6 +1,6 @@
 
 from flask import Blueprint, render_template, jsonify, request
-from .func import list_degrees, security_headers
+from .func import list_degrees, security_headers, request_to_api
 from json import dumps, loads
 views = Blueprint('views', __name__)
 
@@ -30,6 +30,7 @@ def call_api():
     form_data = request.form.to_dict()
     with open(f"./text/{form_data['name']}.txt", 'w') as file:
         file.write(dumps(form_data))
+    request_to_api(form_data)
     return "200"
 
 
