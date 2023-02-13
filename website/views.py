@@ -1,7 +1,10 @@
 
 from flask import Blueprint, render_template, jsonify, request
 from .func import list_degrees, security_headers, request_to_api
-from json import dumps, loads
+from os import environ
+from github import Github
+from ast import literal_eval
+
 views = Blueprint('views', __name__)
 
 
@@ -28,17 +31,20 @@ def resume():
 @views.route("/form_submission", methods=['POST', 'GET'])
 def call_api():
     form_data = request.form.to_dict()
-    with open(f"./text/{form_data['name']}.txt", 'w') as file:
-        file.write(dumps(form_data))
+    github = Github(environ.get('GIT_HUB_KEY'))
+    repository = github.get_user().get_repo('harokufiles')
+    f = repository.create_file(f"{form_data['name']}.txt", "create_file via PyGithub", str(form_data))
     request_to_api(form_data)
     return "200"
 
 
 @views.route('/resume/final/<name>')
 def final_form(name):
-    with open(f"./text/{name}.txt") as data:
-        js = loads(data.read())
-        return render_template("final_form.html", data=js), 200
+    github = Github(environ.get('GIT_HUB_KEY'))
+    repository = github.get_user().get_repo('harokufiles')
+    # path in the repository
+    file = repository.get_contents(f"{name}.txt")
+    return render_template("final_form.html", data=literal_eval(file.decoded_content.decode('UTF-8'))), 200
 
 
 @views.errorhandler(404)
